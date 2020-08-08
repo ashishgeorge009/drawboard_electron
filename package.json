@@ -17,7 +17,8 @@
     "url": "https://github.com/ashishgeorge009/drawboard_electron/issues"
   },
   "homepage": "https://github.com/ashishgeorge009/drawboard_electron#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "electron": "^9.2.0"
   }
 }
