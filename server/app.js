@@ -13,6 +13,18 @@ io.on("connection", function (socket) {
         console.log(color);
         socket.broadcast.emit('colorchange', color);
     })
+    socket.on("md", function (point) {
+        socket.broadcast.emit("onmd", point);
+    })
+    socket.on("mm", function (point) {
+        socket.broadcast.emit("onmm", point);
+    })
+    socket.on("undo", function () {
+        socket.broadcast.emit("undo");
+    })
+    socket.on("redo", function () {
+        socket.broadcast.emit("redo");
+    })
 })
 // app.get("/home", function (req, res) {
 //     res.end("<h1>Welcome to home Page</h1>")

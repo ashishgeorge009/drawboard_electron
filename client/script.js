@@ -20,6 +20,7 @@ board.addEventListener("mousedown", function (e) {
         width: ctx.lineWidth
     }
     points.push(mdp);
+    socket.emit("md", mdp);
 })
 board.addEventListener("mousemove", function (e) {
     //  lineto 
@@ -38,6 +39,7 @@ board.addEventListener("mousemove", function (e) {
             width: ctx.lineWidth
         }
         points.push(mmp);
+        socket.emit("mm", mmp);
     }
     // repeat
 })
@@ -89,6 +91,7 @@ function undoMaker() {
         // call redraw
         redoArr.push(tempArr);
         redraw();
+        socket.emit("undo");
     }
 }
 function redoMaker() {
@@ -99,5 +102,6 @@ function redoMaker() {
         ctx.clearRect(0, 0, board.width, board.height);
         // call redraw
         redraw();
+        socket.emit("redo");
     }
 }
