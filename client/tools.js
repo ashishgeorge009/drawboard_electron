@@ -1,3 +1,7 @@
+
+const socket = io.connect("http://localhost:3000");
+console.log(socket);
+
 let pencil = document.querySelector("#pencil");
 let eraser = document.querySelector("#eraser");
 let undo = document.querySelector("#undo");
@@ -60,6 +64,7 @@ document.addEventListener("keydown", function (e) {
 })
 function handleColor(color) {
     ctx.strokeStyle = color;
+    socket.emit("color", color);
 }
 sliders.forEach(function (slider) {
     slider.addEventListener("change", function () {
