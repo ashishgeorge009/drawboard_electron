@@ -41,13 +41,23 @@ eraser.addEventListener("click", function () {
         ctx.lineWidth = eraserSize;
     }
 })
+board.addEventListener("click", function(){
+    pencilOptions.classList.remove("show");
+    eraserOptions.classList.remove("show");
+})
 undo.addEventListener("click", function () {
+    pencilOptions.classList.remove("show");
+    eraserOptions.classList.remove("show");
     undoMaker()
 })
 redo.addEventListener("click", function () {
+    pencilOptions.classList.remove("show");
+    eraserOptions.classList.remove("show");
     redoMaker();
 })
 sticky.addEventListener("click", function () {
+    pencilOptions.classList.remove("show");
+    eraserOptions.classList.remove("show");
     createSticky();
 })
 // key stroke
@@ -65,13 +75,15 @@ document.addEventListener("keydown", function (e) {
 function handleColor(color) {
     ctx.strokeStyle = color;
     socket.emit("color", color);
+    pencilOptions.classList.remove("show");
+    eraserOptions.classList.remove("show");
 }
 sliders.forEach(function (slider) {
     slider.addEventListener("change", function () {
         let value = slider.value;
         ctx.lineWidth = value;
         if (activeTool == "pencil") {
-pencilSize=ctx.lineWidth;
+            pencilSize=ctx.lineWidth;
         }else{
             eraserSize=ctx.lineWidth;
         }
